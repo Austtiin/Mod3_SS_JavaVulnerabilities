@@ -33,12 +33,10 @@ import java.util.regex.Pattern;
 public class Program1 {
 
     //main method to run the program
-    public static void StartMain() {
-        // "\uFDEF is a noncharter code point"
-        String maliciousInput = "<scr" + "\uFDEF" + "ipt>";
-        System.out.println("Input to be filtered: " + maliciousInput);
+    public static void StartMain(String Input) {
+        System.out.println("Input to be filtered: " + Input);
 
-        String sb = filterString(maliciousInput);
+        String sb = filterString(Input);
         System.out.println("Filtered Input: " + sb);
         // sb = "<script>"
     }

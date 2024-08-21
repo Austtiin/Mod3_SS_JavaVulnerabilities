@@ -19,10 +19,13 @@
 package Solutions;
 
 public class Main {
+    // "\uFDEF is a noncharter code point"
+    static String maliciousInput = "<scr" + "\uFDEF" + "ipt>";
+
     public static void main(String[] args) {
 
 
-        Program1.StartMain();
+        Program1.StartMain(maliciousInput);
         // Program2.StartMain();
         // Program3.StartMain();
     }
