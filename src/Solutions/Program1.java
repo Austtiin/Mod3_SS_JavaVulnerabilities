@@ -32,13 +32,30 @@ import java.util.regex.Pattern;
 
 public class Program1 {
 
+    //main method to run the program
+    public static void StartMain() {
+        // "\uFDEF is a noncharter code point"
+        String maliciousInput = "<scr" + "\uFDEF" + "ipt>";
+        System.out.println("Input to be filtered: " + maliciousInput);
+
+        String sb = filterString(maliciousInput);
+        System.out.println("Filtered Input: " + sb);
+        // sb = "<script>"
+    }
+
+
+
     public static String filterString(String input) {
+
         // Normalize the input string
         String s = Normalizer.normalize(input, Form.NFKC);
+        System.out.println("Normalized: " + s);
 
-        //validate input
+        ///what to look for
         Pattern pattern = Pattern.compile("<script>");
         Matcher matcher = pattern.matcher(s);
+
+        //check for script tag
         if (matcher.find()) {
             throw new IllegalArgumentException("Invalid input");
         }
@@ -48,10 +65,6 @@ public class Program1 {
         return s;
     }
 
-    public static void main(String[] args) {
-        // "\uFDEF is a noncharter code point"
-        String maliciousInput = "<scr" + "\uFDEF" + "ipt>";
-        String sb = filterString(maliciousInput);
-        // sb = "<script>"
-    }
+
+
 }
