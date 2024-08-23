@@ -32,37 +32,38 @@ import java.util.regex.Pattern;
 
 public class Program1 {
 
-    //main method to run the program
-    public static void StartMain(String Input) {
-        System.out.println("Input to be filtered: " + Input);
+    public static void StartMain(String input) {
+        boolean isSafe = filterString(input);
 
-        String sb = filterString(Input);
-        System.out.println("Filtered Input: " + sb);
-        // sb = "<script>"
+        if (isSafe) {
+            System.out.println("Input is safe.");
+        } else {
+            System.out.println("Input is NOT safe.");
+        }
     }
 
-
-
-    public static String filterString(String input) {
+    public static boolean filterString(String input) {
+        System.out.println("Input to be filtered: " + input);
 
         // Normalize the input string
         String s = Normalizer.normalize(input, Form.NFKC);
         System.out.println("Normalized: " + s);
 
-        ///what to look for
+        // Replace all noncharacter code points with Unicode FFFD
+        s = s.replaceAll("[\\uFDD0-\\uFDEF\\uFFFE\\uFFFF\\u1FFFE\\u1FFFF\\u2FFFE\\u2FFFF\\u3FFFE\\u3FFFF\\u4FFFE\\u4FFFF\\u5FFFE\\u5FFFF\\u6FFFE\\u6FFFF\\u7FFFE\\u7FFFF\\u8FFFE\\u8FFFF\\u9FFFE\\u9FFFF\\uAFFFE\\uAFFFF\\uBFFFE\\uBFFFF\\uCFFFE\\uCFFFF\\uDFFFE\\uDFFFF\\uEFFFE\\uEFFFF\\uFFFFE\\uFFFFF\\u10FFFE\\u10FFFF]", "\uFFFD");
+        System.out.println("Replaced noncharacter code points: " + s);
+
+        // Pattern to find the script tag
         Pattern pattern = Pattern.compile("<script>");
         Matcher matcher = pattern.matcher(s);
 
-        //check for script tag
+        // Check for script tag
         if (matcher.find()) {
-            throw new IllegalArgumentException("Invalid input");
+            System.out.println("Input contains a <script> tag.");
+            return false;
+        } else {
+            System.out.println("Input does not contain a <script> tag.");
+            return true;
         }
-
-        //delete noncharacter code points
-        s = s.replaceAll("[^\\p{ASCII}]", "");
-        return s;
     }
-
-
-
 }

@@ -26,6 +26,9 @@ public class Main {
 
 
         Program1.StartMain(maliciousInput);
+        System.out.println("\n");
+
+
         // Program2.StartMain();
         // Program3.StartMain();
     }
