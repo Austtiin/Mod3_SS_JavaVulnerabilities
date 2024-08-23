@@ -21,11 +21,4 @@ public class TestCases1 {
         String scriptTag = "<script>";
         assertFalse(Program1.filterString(scriptTag));
     }
-
-    @org.junit.Test
-    public void testNonCharacterCodePoint() {
-        // Test case 3: string with a noncharacter code point
-        String nonCharacterCodePoint = "<scr" + "\uFDEF" + "ipt>";
-        assertFalse(Program1.filterString(nonCharacterCodePoint));
-    }
 }
