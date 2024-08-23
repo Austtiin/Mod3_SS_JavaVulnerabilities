@@ -54,7 +54,5 @@ public class Main {
         } catch (Exception e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
-
-
     }
 }
