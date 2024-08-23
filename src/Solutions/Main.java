@@ -18,18 +18,36 @@
 
 package Solutions;
 
+import java.io.File;
+
 public class Main {
     // "\uFDEF is a noncharter code point"
     static String maliciousInput = "<scr" + "\uFDEF" + "ipt>";
 
     public static void main(String[] args) {
 
-
+//*****Program 1 start*****
         Program1.StartMain(maliciousInput);
         System.out.println("\n");
 
 
-        // Program2.StartMain();
+        //**Ingore this comment block for now**
+        //create text file to test with Program2
+        //this should be true if the file is deleted
+        File file = new File("someFileName.txt");
+        try {
+            //create the file
+            file.createNewFile();
+        } catch (Exception e) {
+            System.out.println("An error occurred creating the file: " + e.getMessage());
+        }
+
+//*****Program 2 start*****
+        Program2.StartMain();
+        System.out.println("\n");
+
+
+
         // Program3.StartMain();
     }
 }

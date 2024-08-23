@@ -2,7 +2,6 @@ package Solutions;
 
 // src/Solutions/TestCases1.java
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
