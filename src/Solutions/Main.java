@@ -47,7 +47,14 @@ public class Main {
         System.out.println("\n");
 
 
+//*****Program 3 start*****
+        String[] args3 = {"/nonexistentfile.txt"};
+        try {
+            Program3.StartMain(args3);
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
 
-        // Program3.StartMain();
+
     }
 }

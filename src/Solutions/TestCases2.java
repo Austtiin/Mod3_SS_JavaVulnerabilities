@@ -9,7 +9,7 @@ public class TestCases2 {
         public void testDeleteFile() {
             // Test case 1: delete file
 
-            //This is false currently because the file is not deleted
+            //This is failing currently because the file is not deleted
             //file is not deleted because the file is not created
             //I.E the file does not exist until our main program creates it
             //test case 1 will fail
